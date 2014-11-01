@@ -17,7 +17,10 @@ void ScreenSaverApp::init()
     timer_id_ = ::SetTimer(hwnd_, 1001, USER_TIMER_MINIMUM, NULL);
     screenshot_.capture();
 
-    movement_.setBounds(0, 0, 1500, 1500);
+    int mw = screenshot_.getWidth() * kZoomScale - screenshot_.getWidth();
+    int mh = screenshot_.getHeight() * kZoomScale - screenshot_.getHeight();
+
+    movement_.setBounds(0, 0, mw, mh);
 }
 
 void ScreenSaverApp::shutdown()
@@ -44,7 +47,7 @@ void ScreenSaverApp::onPaint()
     RECT rc = {0};
     ::GetClientRect(hwnd_, &rc);
 
-    drawZoomed(dc, rc.right - rc.left, rc.bottom - rc.top, 16, screenshot_.getBitmap(), static_cast<int>(pos.x), static_cast<int>(pos.y));
+    drawZoomed(dc, rc.right - rc.left, rc.bottom - rc.top, kZoomScale, screenshot_.getBitmap(), static_cast<int>(pos.x), static_cast<int>(pos.y));
 
     ::EndPaint(hwnd_, &ps);
 }

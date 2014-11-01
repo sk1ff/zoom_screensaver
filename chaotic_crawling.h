@@ -26,7 +26,7 @@ private:
     double angle_delta_;        /* value by which the angle incremented for each "tick" */
     Point pos_;                 /* current position */
 
-    int left_bound_, right_bound_, top_bound_, bottom_bound_; /* bounds */
+    int left_bound_, right_bound_, top_bound_, bottom_bound_; /* movement bounds */
     bool check_bounds_;         /* true if bounds are set */
 
     /* generate new values for counter_ and angle_delta_ */

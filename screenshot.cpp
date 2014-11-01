@@ -1,9 +1,5 @@
 #include "screenshot.h"
 
-#pragma once
-
-#include <Windows.h>
-
 Screenshot::Screenshot(void)
 : hbmp_(0),
   width_(0),

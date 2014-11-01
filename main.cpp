@@ -1,11 +1,11 @@
+#include "screen_saver_app.h"
+
 #include <Windows.h>
 #include <Scrnsave.h>
 #include <assert.h>
 
-#include "screen_saver_app.h"
-
 /* Scrnsave.lib relies on the implementation of the following three functions in our code: ScreenSaverProc, 
-   ScreenSaverConfigureDialog and RegisterDialogClasses This file contains the implementation for them.
+   ScreenSaverConfigureDialog and RegisterDialogClasses. The file contains these functions.
  */
 
 ScreenSaverApp * g_app_ptr = 0;

@@ -5,13 +5,18 @@
 #include <assert.h>
 #define _USE_MATH_DEFINES
 #include <math.h>
+#include <algorithm>
 
 const double ChaoticCrawling::kSpeed = 1.0;
 
 ChaoticCrawling::ChaoticCrawling(void)
-    : check_bounds_(false)
+    : check_bounds_(false),
+    angle_(0.)
 {
-    pos_.x = pos_.y = 0.;
+    pos_.x = 0.;
+    pos_.y = 0.;
+
+    generateNew();
 }
 
 void ChaoticCrawling::setBounds(int left, int top, int right, int bottom)
@@ -29,7 +34,7 @@ void ChaoticCrawling::setBounds(int left, int top, int right, int bottom)
 
 void ChaoticCrawling::generateNew()
 {
-    counter_ = Random::from_range(250, 1500);
+    counter_ = Random::from_range(250, 2500);
     int new_angle = Random::from_range(0, 360);
 
     angle_delta_ = (double) (new_angle - angle_) / counter_;
@@ -56,7 +61,7 @@ void ChaoticCrawling::moveNext()
         angle_ = ::atan2(dy, dx) * 180 / M_PI;
 
         angle_delta_ = 0.;
-        counter_ = 300;
+        counter_ = Random::from_range(250, 2500);
 
         new_pos = move(pos_, angle_, kSpeed);
     }

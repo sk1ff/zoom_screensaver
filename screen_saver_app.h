@@ -14,6 +14,8 @@ public:
     void onPaint();
 
 private:
+    static const int kZoomScale = 32;
+
     HWND hwnd_;
     Screenshot screenshot_;
     ChaoticCrawling movement_;
